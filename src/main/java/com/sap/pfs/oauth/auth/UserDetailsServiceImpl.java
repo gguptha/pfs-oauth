@@ -1,6 +1,6 @@
-package com.sap.pfs.oauth.pfsoauth.auth;
+package com.sap.pfs.oauth.auth;
 
-import com.sap.pfs.oauth.pfsoauth.util.CustomException;
+import com.sap.pfs.oauth.util.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;

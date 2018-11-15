@@ -1,4 +1,4 @@
-package com.sap.pfs.oauth.pfsoauth.config;
+package com.sap.pfs.oauth.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;

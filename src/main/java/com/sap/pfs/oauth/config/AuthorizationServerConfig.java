@@ -1,4 +1,4 @@
-package com.sap.pfs.oauth.pfsoauth.config;
+package com.sap.pfs.oauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

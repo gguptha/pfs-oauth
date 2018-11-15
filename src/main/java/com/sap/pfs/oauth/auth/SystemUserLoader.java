@@ -1,4 +1,4 @@
-package com.sap.pfs.oauth.pfsoauth.auth;
+package com.sap.pfs.oauth.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +15,6 @@ public class SystemUserLoader implements CommandLineRunner {
     @Override
     public void run(String... strings) {
         if(userRepository.findByEmail("admin") == null)
-            userRepository.save(new User("admin","admin",Roles.ADMIN));
+            userRepository.save(new User("admin","admin", Roles.ADMIN));
     }
 }

@@ -1,4 +1,4 @@
-package com.sap.pfs.oauth.pfsoauth.auth;
+package com.sap.pfs.oauth.auth;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum  Roles {
     ADMIN("ADMIN","Admin"),
-    STUDENT("STUDENT","Student"),
-    TUTOR("TUTOR","Tutor");
+    USER("USER","User"),
+    MANAGER("MANAGER","Manager");
 
     String abbreviation;
     String description;

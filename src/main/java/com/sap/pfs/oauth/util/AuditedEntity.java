@@ -1,4 +1,4 @@
-package com.sap.pfs.oauth.pfsoauth.util;
+package com.sap.pfs.oauth.util;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

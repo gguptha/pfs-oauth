@@ -1,4 +1,4 @@
-package com.sap.pfs.oauth.pfsoauth.auth;
+package com.sap.pfs.oauth.auth;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;

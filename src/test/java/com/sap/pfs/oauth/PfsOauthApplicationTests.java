@@ -1,4 +1,4 @@
-package com.sap.pfs.oauth.pfsoauth;
+package com.sap.pfs.oauth;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

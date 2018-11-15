@@ -1,4 +1,4 @@
-package com.sap.pfs.oauth.pfsoauth.util;
+package com.sap.pfs.oauth.util;
 
 import org.springframework.http.HttpStatus;
 

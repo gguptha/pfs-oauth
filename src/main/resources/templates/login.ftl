@@ -309,9 +309,9 @@
             </form>
 
             <!-- footer -->
-            <!--div id="formFooter">
-                Powered by <a class="underlineHover" target="_blank" href="http://leanthoughts.com">Leanthoughts</a>
-            </div-->
+            <div id="formFooter">
+                Not a User ? <a class="underlineHover" target="_blank" href="http://localhost:8080/signup">Signup</a>
+            </div>
 
         </div>
     </div>
