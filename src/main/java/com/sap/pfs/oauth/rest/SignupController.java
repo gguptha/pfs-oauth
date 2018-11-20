@@ -29,10 +29,21 @@ public class SignupController {
     @PostMapping("/signup")
     public ResponseEntity<Boolean> signup(@RequestBody SignupResource signupResource){
         String activationCode = UUID.randomUUID().toString();
-        User user = new User(signupResource.getEmail(),signupResource.getPassword(),new HashSet<>(Arrays.asList(Roles.USER)),activationCode,true);
+        User user = new User(signupResource.getEmail(),signupResource.getPassword(),new HashSet<>(Arrays.asList(Roles.MAIN_LOAN_PARTNER)),activationCode,true);
         user = userRepository.save(user);
         log.info("{} created",user);
-        publisher.publishEvent(new UserSignedUpEvent(user.getEmail(),user.getActivation()));
+        publisher.publishEvent(new UserSignedUpEvent(user.getEmail(), user.getActivation()));
+        return ResponseEntity.ok(true);
+    }
+
+    @PostMapping("/admin/signup")
+    public ResponseEntity<Boolean> adminSignUp(@RequestBody SignupResource signupResource)
+    {
+        User user = new User(signupResource.getEmail(), signupResource.getPassword(), new HashSet<>(Arrays.asList(Roles.APPRAISAL_OFFICER)),
+                "",true);
+        user = userRepository.save(user);
+        log.info("{} created", user);
+        // publisher.publishEvent(new UserSignedUpEvent(user.getEmail(), user.getActivation()));
         return ResponseEntity.ok(true);
     }
 

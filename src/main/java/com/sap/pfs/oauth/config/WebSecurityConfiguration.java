@@ -28,7 +28,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //Configuring Logout
                 .and().logout().logoutUrl("/logout").permitAll()
 
-                .and().authorizeRequests().antMatchers("/api/signup","/api/signup/verify/**").permitAll()
+                .and().authorizeRequests().antMatchers("/api/signup","/api/admin/signup","/api/signup/verify/**").permitAll()
 
                 //Enable authentication for the rest of the end points
                 .and().authorizeRequests().anyRequest().authenticated()
