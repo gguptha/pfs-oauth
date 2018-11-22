@@ -15,6 +15,6 @@ public class SystemUserLoader implements CommandLineRunner {
     @Override
     public void run(String... strings) {
         if(userRepository.findByEmail("admin") == null)
-            userRepository.save(new User("admin","admin", Roles.PFS_IT_TEAM));
+            userRepository.save(new User("admin","dn47gh3y", Roles.PFS_IT_TEAM));
     }
 }
