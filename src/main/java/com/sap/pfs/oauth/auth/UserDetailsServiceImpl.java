@@ -35,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, UserDetailsMa
         User user = userRepository.findByEmail(username);
 
         if (user == null)
-            throw new CustomException("User not found", HttpStatus.UNAUTHORIZED);
+            throw new UsernameNotFoundException("User not found");
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.addAll(user.getAuthorities().stream().map(authority -> new SimpleGrantedAuthority(authority.abbreviation)).collect(Collectors.toSet()));

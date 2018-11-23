@@ -23,7 +23,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
 
                 //Configuring Form Login
-                .formLogin().loginPage("/login").failureHandler(new CustomAuthenticationFailureHandler()).permitAll()
+                .formLogin().loginPage("/login").permitAll()
 
                 //Configuring Logout
                 .and().logout().logoutUrl("/logout").permitAll()

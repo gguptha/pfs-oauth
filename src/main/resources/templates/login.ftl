@@ -306,6 +306,12 @@
                 <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
                 <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
                 <input type="submit" class="fadeIn fourth" value="Log In">
+                <#if RequestParameters.error??>
+                    <div class="alert alert-danger" align="center">
+                        <strong>Invalid Username or Password !</strong><br>Please try again.
+                    </div>
+                    <br>
+                </#if>
             </form>
 
             <!-- footer -->

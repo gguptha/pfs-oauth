@@ -53,4 +53,9 @@ public class User extends AuditedEntity {
         this.activation = "";
         return this;
     }
+
+    public User modifyPassword(String password){
+        this.password = password;
+        return this;
+    }
 }

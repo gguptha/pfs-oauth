@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: pfsenquiry
+    username: root
     password: dn47gh3y
     maximum-pool-size: 40
     url: jdbc:mysql://localhost:3306/pfsoauth?createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true
