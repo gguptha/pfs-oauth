@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 
 @RestController
@@ -16,8 +17,16 @@ public class PfsOauthApplication {
 		SpringApplication.run(PfsOauthApplication.class, args);
 	}
 
-	@GetMapping("time")
+	@GetMapping("/time")
 	public ResponseEntity getTime(){
 		return ResponseEntity.ok(LocalDateTime.now());
 	}
+
+	@GetMapping("/api/me")
+	public ResponseEntity getUser(Principal principal){
+		return ResponseEntity.ok(principal);
+	}
+
+
 }
+

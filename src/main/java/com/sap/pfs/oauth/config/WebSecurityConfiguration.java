@@ -1,6 +1,5 @@
 package com.sap.pfs.oauth.config;
 
-import com.sap.pfs.oauth.auth.CustomAuthenticationFailureHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +27,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //Configuring Logout
                 .and().logout().logoutUrl("/logout").permitAll()
 
-                .and().authorizeRequests().antMatchers("/api/signup","/api/admin/signup","/api/signup/verify/**").permitAll()
+                .and().authorizeRequests().antMatchers("/auth/me","/auth/time","/api/signup","/api/admin/signup","/api/signup/verify/**").permitAll()
 
                 //Enable authentication for the rest of the end points
                 .and().authorizeRequests().anyRequest().authenticated()

@@ -316,7 +316,7 @@
 
             <!-- footer -->
             <div id="formFooter">
-                Not a User ? <a class="underlineHover" target="_blank" href="http://192.168.1.246:8080/signup">Signup</a>
+                Not a User ? <a class="underlineHover" target="_blank" href="${signupUrl}">Signup</a>
             </div>
 
         </div>

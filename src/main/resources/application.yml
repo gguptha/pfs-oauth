@@ -20,3 +20,5 @@ server:
   port: 9999
   servlet:
     context-path: /auth
+oauth:
+  signupUrl : http://localhost:8080/signup
