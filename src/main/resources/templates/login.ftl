@@ -315,10 +315,15 @@
             </form>
 
             <!-- footer -->
-            <div id="formFooter">
-                Not a User ? <a class="underlineHover" target="_blank" href="${signupUrl}">Signup</a>
+            <div>
+                <div id="formFooterSingup">
+                    <a class="underlineHover" target="_blank" href="${signupUrl}">Signup</a>
+                </div>
+                <div id="formFooterPwd">
+                    <a class="underlineHover" target="_blank" href="${forgotPassword}">Forgot Password?</a>
+                </div>
             </div>
-
+            <br>
         </div>
     </div>
 

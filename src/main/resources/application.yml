@@ -21,4 +21,5 @@ server:
   servlet:
     context-path: /auth
 oauth:
-  signupUrl : http://localhost:8080/signup
+  signupUrl: http://localhost:8080/signup
+  forgotPassword: http://localhost:8080/passwordReset

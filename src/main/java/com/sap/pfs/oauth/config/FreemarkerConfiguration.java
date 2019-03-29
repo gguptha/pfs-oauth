@@ -15,6 +15,10 @@ public class FreemarkerConfiguration implements BeanPostProcessor {
     @Value("${oauth.signupUrl}")
     private String myProp;
 
+    @Value("${oauth.forgotPassword}")
+    private String myProp1;
+
+
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName)
             throws BeansException {
@@ -22,6 +26,7 @@ public class FreemarkerConfiguration implements BeanPostProcessor {
             FreeMarkerConfigurer configurer = (FreeMarkerConfigurer) bean;
             Map<String, Object> sharedVariables = new HashMap<>();
             sharedVariables.put("signupUrl", myProp);
+            sharedVariables.put("forgotPassword", myProp1);
             configurer.setFreemarkerVariables(sharedVariables);
         }
         return bean;

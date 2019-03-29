@@ -27,4 +27,13 @@ public class UserController {
         log.info("Password changed for {}",user);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/password/reset")
+    public ResponseEntity resetPassword(@RequestBody SignupResource resource) {
+        User user = userRepository.findByEmail(resource.getEmail());
+        user.modifyPassword(resource.getPassword());
+        user = userRepository.save(user);
+        log.info("Password changed for {}",user);
+        return ResponseEntity.ok().build();
+    }
 }
