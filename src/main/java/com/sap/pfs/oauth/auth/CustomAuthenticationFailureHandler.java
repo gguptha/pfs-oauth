@@ -18,8 +18,8 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         System.out.println("In custom error handler");
         System.out.println("In custom error handler");
 
-        if (exception.getClass().isAssignableFrom(LockedException.class))
-            response.sendRedirect("/login?locked");
+        if (exception.getCause().getClass().isAssignableFrom(LockedException.class))
+            response.sendRedirect("/auth/login?locked");
         else
             response.sendError(401, exception.getMessage());
     }

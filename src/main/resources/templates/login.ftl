@@ -312,6 +312,12 @@
                     </div>
                     <br>
                 </#if>
+                <#if RequestParameters.locked??>
+                    <div class="alert alert-danger" align="center">
+                        <strong>User Locked.</strong><br>Please reset your password.
+                    </div>
+                    <br>
+                </#if>
             </form>
 
             <!-- footer -->
