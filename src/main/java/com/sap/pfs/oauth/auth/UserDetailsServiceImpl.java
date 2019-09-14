@@ -1,8 +1,8 @@
 package com.sap.pfs.oauth.auth;
 
-import com.sap.pfs.oauth.util.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.LockedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,29 +16,32 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * @author : fahadfazil
- * @since : 22/12/17
- */
-
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService, UserDetailsManager {
 
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private  LoginAttemptService loginAttemptService;
+
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws AuthenticationException {
 
         User user = userRepository.findByEmail(username);
 
         if (user == null)
             throw new UsernameNotFoundException("User not found");
 
+        if (loginAttemptService.isBlocked(username)) {
+            System.out.println(username + " is blocked");
+            throw new LockedException("UserBlocked");
+        }
+
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.addAll(user.getAuthorities().stream().map(authority -> new SimpleGrantedAuthority(authority.abbreviation)).collect(Collectors.toSet()));
+
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
     }
 

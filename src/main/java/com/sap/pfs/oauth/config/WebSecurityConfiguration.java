@@ -1,5 +1,6 @@
 package com.sap.pfs.oauth.config;
 
+import com.sap.pfs.oauth.auth.CustomAuthenticationFailureHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +23,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
 
                 //Configuring Form Login
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().loginPage("/login").failureHandler(new CustomAuthenticationFailureHandler()).permitAll()
 
                 //Configuring Logout
                 .and().logout().logoutUrl("/logout").permitAll()
