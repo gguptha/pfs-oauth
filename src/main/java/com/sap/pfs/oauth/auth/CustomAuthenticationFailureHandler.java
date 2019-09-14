@@ -15,12 +15,9 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException
             exception) throws IOException, ServletException {
         //super.onAuthenticationFailure(request, response, exception);
-        System.out.println("In custom error handler");
-        System.out.println("In custom error handler");
-
-        if (exception.getCause().getClass().isAssignableFrom(LockedException.class))
+        if (exception.getCause() != null && exception.getCause().getClass().isAssignableFrom(LockedException.class))
             response.sendRedirect("/auth/login?locked");
         else
-            response.sendError(401, exception.getMessage());
+            response.sendRedirect("/auth/login?error");
     }
 }

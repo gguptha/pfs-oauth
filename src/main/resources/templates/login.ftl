@@ -314,7 +314,7 @@
                 </#if>
                 <#if RequestParameters.locked??>
                     <div class="alert alert-danger" align="center">
-                        <strong>User Locked.</strong><br>Please reset your password.
+                        <strong>User is locked.</strong><br>Please try again after 24 hours.
                     </div>
                     <br>
                 </#if>
