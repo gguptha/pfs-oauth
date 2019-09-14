@@ -21,5 +21,5 @@ server:
   servlet:
     context-path: /auth
 oauth:
-  signupUrl: http://localhost:8080/enquiry/signup
-  forgotPassword: http://localhost:8080/enquiry/passwordReset
+  signupUrl:  http://192.168.1.246:9999/enquiry/signup
+  forgotPassword:  http://192.168.1.246:9999/enquiry/passwordReset
