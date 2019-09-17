@@ -1,5 +1,6 @@
 package com.sap.pfs.oauth.rest;
 
+import com.sap.pfs.oauth.auth.LoginAttemptService;
 import com.sap.pfs.oauth.auth.User;
 import com.sap.pfs.oauth.auth.UserRepository;
 import com.sap.pfs.oauth.resource.SignupResource;
@@ -18,6 +19,8 @@ public class UserController {
 
     private final UserRepository userRepository;
 
+    private final LoginAttemptService loginAttemptService;
+
     @PutMapping("/password/modify")
     public ResponseEntity changePassword(@RequestBody SignupResource resource, Principal principal) {
         // User user = userRepository.findByEmail(principal.getName());
@@ -33,6 +36,10 @@ public class UserController {
         User user = userRepository.findByEmail(resource.getEmail());
         user.modifyPassword(resource.getPassword());
         user = userRepository.save(user);
+
+        // In case the user is blocked for wrong entry of passwords, reset the attemptsCache
+        loginAttemptService.invalidateAttemptsCache(resource.getEmail());
+
         log.info("Password changed for {}",user);
         return ResponseEntity.ok().build();
     }

@@ -49,4 +49,9 @@ public class LoginAttemptService {
             return false;
         }
     }
+
+    public void invalidateAttemptsCache(String key) {
+        System.out.println("Invalidating attemptsCache for " + key);
+        attemptsCache.invalidate(key);
+    }
 }
