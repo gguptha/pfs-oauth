@@ -28,6 +28,10 @@ public class UserController {
         user.modifyPassword(resource.getPassword());
         user = userRepository.save(user);
         log.info("Password changed for {}",user);
+
+        // In case the user is blocked for wrong entry of passwords, reset the attemptsCache
+        loginAttemptService.invalidateAttemptsCache(resource.getEmail());
+
         return ResponseEntity.ok().build();
     }
 

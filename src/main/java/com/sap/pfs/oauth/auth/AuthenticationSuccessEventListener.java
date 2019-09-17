@@ -25,6 +25,6 @@ public class AuthenticationSuccessEventListener implements ApplicationListener<A
             String email = (String) event.getAuthentication().getPrincipal();
             loginAttemptService.loginSucceeded(email);
 
-        }
     }
 }
+        }
