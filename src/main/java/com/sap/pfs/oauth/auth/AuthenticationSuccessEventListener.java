@@ -18,13 +18,13 @@ public class AuthenticationSuccessEventListener implements ApplicationListener<A
             User user = (User) event.getAuthentication().getPrincipal();
             String email = user.getUsername();
 //
-//        String email = (String) event.getAuthentication().getPrincipal();
+//          String email = (String) event.getAuthentication().getPrincipal();
 
             loginAttemptService.loginSucceeded(email);
-        }catch (ClassCastException ex){
+        }
+        catch (ClassCastException ex){
             String email = (String) event.getAuthentication().getPrincipal();
             loginAttemptService.loginSucceeded(email);
-
         }
     }
 }

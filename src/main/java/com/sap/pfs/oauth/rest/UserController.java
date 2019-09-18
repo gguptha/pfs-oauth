@@ -1,16 +1,16 @@
 package com.sap.pfs.oauth.rest;
 
-import com.sap.pfs.oauth.auth.LoginAttemptService;
-import com.sap.pfs.oauth.auth.User;
-import com.sap.pfs.oauth.auth.UserRepository;
+import com.sap.pfs.oauth.auth.*;
 import com.sap.pfs.oauth.resource.SignupResource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
+import java.util.List;
 
 @Slf4j
 @ApiController
@@ -19,16 +19,39 @@ public class UserController {
 
     private final UserRepository userRepository;
 
+    private final PasswordHistoryRepository passwordHistoryRepository;
+
     private final LoginAttemptService loginAttemptService;
 
     @PutMapping("/password/modify")
     public ResponseEntity changePassword(@RequestBody SignupResource resource, Principal principal) {
-        // User user = userRepository.findByEmail(principal.getName());
         User user = userRepository.findByEmail(resource.getEmail());
-        user.modifyPassword(resource.getPassword());
-        user = userRepository.save(user);
-        log.info("Password changed for {}",user);
+
+        if (!user.getPassword().equals(resource.getPassword())) {
+            if (ValidateForHistory(user.getEmail(), resource.getPassword())) {
+                user.modifyPassword(resource.getPassword());
+                user = userRepository.save(user);
+                PasswordHistory passwordHistory = new PasswordHistory(user.getEmail(), user.getPassword());
+                passwordHistory = passwordHistoryRepository.save(passwordHistory);
+            } else {
+                return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new RuntimeException("Password cannot " +
+                        "be the same as 3 previously entered passwords"));
+            }
+        }
         return ResponseEntity.ok().build();
+    }
+
+    /*
+        ValidateForHistory()
+        Return false if password matches any of the 3 previously entered passwords.
+     */
+    private boolean ValidateForHistory(String email, String password) {
+        List<PasswordHistory> historyList = passwordHistoryRepository.findTop3ByEmailOrderByCreatedDesc(email);
+        for (PasswordHistory passwordHistory : historyList) {
+            if (passwordHistory.getPassword().equals(password))
+                return false;
+        }
+        return true;
     }
 
     @PutMapping("/password/reset")

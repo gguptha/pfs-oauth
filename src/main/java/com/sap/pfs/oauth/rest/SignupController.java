@@ -1,8 +1,6 @@
 package com.sap.pfs.oauth.rest;
 
-import com.sap.pfs.oauth.auth.Roles;
-import com.sap.pfs.oauth.auth.User;
-import com.sap.pfs.oauth.auth.UserRepository;
+import com.sap.pfs.oauth.auth.*;
 import com.sap.pfs.oauth.engine.UserSignedUpEvent;
 import com.sap.pfs.oauth.resource.SignupResource;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +22,8 @@ public class SignupController {
 
     private final UserRepository userRepository;
 
+    private final PasswordHistoryRepository passwordHistoryRepository;
+
     private final ApplicationEventPublisher publisher;
 
     @PostMapping("/signup")
@@ -33,6 +33,10 @@ public class SignupController {
         user = userRepository.save(user);
         log.info("{} created",user);
         publisher.publishEvent(new UserSignedUpEvent(user.getEmail(), user.getActivation()));
+
+        PasswordHistory passwordHistory = new PasswordHistory(user.getEmail(), user.getPassword());
+        passwordHistory = passwordHistoryRepository.save(passwordHistory);
+
         return ResponseEntity.ok(true);
     }
 
@@ -44,6 +48,10 @@ public class SignupController {
         user = userRepository.save(user);
         log.info("{} created", user);
         // publisher.publishEvent(new UserSignedUpEvent(user.getEmail(), user.getActivation()));
+
+        PasswordHistory passwordHistory = new PasswordHistory(user.getEmail(), user.getPassword());
+        passwordHistory = passwordHistoryRepository.save(passwordHistory);
+
         return ResponseEntity.ok(true);
     }
 
