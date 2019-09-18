@@ -27,10 +27,17 @@ public class UserController {
     public ResponseEntity changePassword(@RequestBody SignupResource resource, Principal principal) {
         User user = userRepository.findByEmail(resource.getEmail());
 
+        //Invalidate Attempts Cache
+        loginAttemptService.invalidateAttemptsCache(resource.getEmail());
+
         if (!user.getPassword().equals(resource.getPassword())) {
             if (ValidateForHistory(user.getEmail(), resource.getPassword())) {
                 user.modifyPassword(resource.getPassword());
                 user = userRepository.save(user);
+
+                // In case the user is blocked for wrong entry of passwords, reset the attemptsCache
+
+
                 PasswordHistory passwordHistory = new PasswordHistory(user.getEmail(), user.getPassword());
                 passwordHistory = passwordHistoryRepository.save(passwordHistory);
             } else {
