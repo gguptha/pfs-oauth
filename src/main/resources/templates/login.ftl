@@ -313,8 +313,8 @@
                     <br>
                 </#if>
                 <#if RequestParameters.locked??>
-                    <div class="alert alert-danger" align="center">
-                        <strong>User is locked.</strong><br>Please try again after 24 hours.
+                    <div  class="alert alert-danger" align="center">
+                        <strong>User is locked.</strong><br>Please try again after 24 hours or Contact PTC Financial Services.
                     </div>
                     <br>
                 </#if>
