@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PFS - Login</title>
+    <title>PFS Portal - Login</title>
 
     <style>
 
@@ -20,7 +20,11 @@
         /* BASIC */
 
         html {
-            background-color: #262933;
+            /*background-image: url("/images/dark-material-bg.jpg") ;*/
+            /*background-image: image();*/
+            background-color: #000000;
+            background-image: url("/images/dark-material-bg.jpg");
+
         }
 
         body {
@@ -62,7 +66,10 @@
         #formContent {
             -webkit-border-radius: 10px 10px 10px 10px;
             border-radius: 10px 10px 10px 10px;
-            background: #fff;
+            /*background: url('/images/backgrounds/DD-Blurred-Spring-Background-88878-Preview.jpg') no-repeat;*/
+
+            background:   #ffffff;
+            background-image: url("/images/DD-Blurred-Spring-Background-88878-Preview.jpg");
             padding: 30px;
             width: 90%;
             max-width: 450px;
@@ -277,10 +284,12 @@
         }
 
         #icon {
-            width:30%;
-            margin-top: 30px;
-            margin-bottom: 20px;
+            width:50%;
+            margin-top: 15px;
+            margin-bottom: 10px;
         }
+
+
 
         * {
             box-sizing: border-box;
@@ -298,7 +307,7 @@
 
             <!-- Icon -->
             <div class="fadeIn first">
-                <img src="https://www.ptcfinancial.com/images/logo.jpg" id="icon" alt="User Icon" />
+                <img src="https://www.ptcfinancial.com/images/logo.jpg" id="icon" alt="User Icon"   />
             </div>
 
             <!-- Login Form -->
