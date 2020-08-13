@@ -15,6 +15,7 @@ public class AuthenticationSuccessEventListener implements ApplicationListener<A
     public void onApplicationEvent(AuthenticationSuccessEvent event) {
 
         try {
+            System.out.println("login succeeded");
             User user = (User) event.getAuthentication().getPrincipal();
             String email = user.getUsername();
 //
