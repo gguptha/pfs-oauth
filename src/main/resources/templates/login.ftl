@@ -23,7 +23,7 @@
             /*background-image: url("/images/dark-material-bg.jpg") ;*/
             /*background-image: image();*/
             background-color: #000000;
-            background-image: url("/images/dark-material-bg.jpg");
+            /*background-image: url("oauth/images/dark-material-bg.jpg");*/
 
         }
 
@@ -69,7 +69,7 @@
             /*background: url('/images/backgrounds/DD-Blurred-Spring-Background-88878-Preview.jpg') no-repeat;*/
 
             background:   #ffffff;
-            background-image: url("/images/DD-Blurred-Spring-Background-88878-Preview.jpg");
+            /*background-image: url("oauth/images/DD-Blurred-Spring-Background-88878-Preview.jpg");*/
             padding: 30px;
             width: 90%;
             max-width: 450px;
@@ -307,6 +307,7 @@
 
             <!-- Icon -->
             <div class="fadeIn first">
+                
                 <img src="https://www.ptcfinancial.com/images/logo.jpg" id="icon" alt="User Icon"   />
             </div>
 
