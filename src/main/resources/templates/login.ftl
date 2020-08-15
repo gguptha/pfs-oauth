@@ -24,6 +24,7 @@
             /*background-image: image();*/
             background-color: #000000;
             /*background-image: url("oauth/images/dark-material-bg.jpg");*/
+            
 
         }
 
@@ -307,7 +308,7 @@
 
             <!-- Icon -->
             <div class="fadeIn first">
-                
+
                 <img src="https://www.ptcfinancial.com/images/logo.jpg" id="icon" alt="User Icon"   />
             </div>
 
