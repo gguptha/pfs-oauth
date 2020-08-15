@@ -21,5 +21,8 @@ server:
   servlet:
     context-path: /auth
 oauth:
-  signupUrl: https://enquiry.pfs-ess.com/enquiry/signup
-  forgotPassword: https://enquiry.pfs-ess.com/enquiry/passwordReset
+#  signupUrl: https://enquiry.pfs-ess.com/enquiry/signup
+#  forgotPassword: https://enquiry.pfs-ess.com/enquiry/passwordReset
+
+  signupUrl:  http://192.168.1.247:8080/enquiry/signup
+  forgotPassword:  http://192.168.1.247:8080/enquiry/passwordReset
