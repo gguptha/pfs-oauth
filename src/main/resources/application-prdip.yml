@@ -23,6 +23,3 @@ server:
 oauth:
   signupUrl: http://192.168.1.247:8080/enquiry/signup
   forgotPassword: http://192.168.1.247:8080/enquiry/passwordReset
-
-#  signupUrl:  http://192.168.1.247:8080/enquiry/signup
-#  forgotPassword:  http://192.168.1.247:8080/enquiry/passwordReset
