@@ -315,7 +315,7 @@
             <!-- Login Form -->
             <form action="login" method="post">
                 <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
-                <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" autocomplete="off">
                 <input type="submit" class="fadeIn fourth" value="Log In">
                 <#if RequestParameters.error??>
                     <div class="alert alert-danger" align="center">
